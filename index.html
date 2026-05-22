@@ -67,7 +67,7 @@ body.cursor-on .cursor-dot{opacity:.6}
 .nav-toggle.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
 .nav-toggle.active span:nth-child(2){opacity:0}
 .nav-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
-.hero{min-height:100vh;display:flex;align-items:center;padding-top:var(--nav-h);position:relative;overflow:hidden}
+.hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;padding-top:var(--nav-h);position:relative;overflow:hidden}
 .hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,var(--blue-light) 0%,var(--white) 45%,#dbeafe 100%);z-index:-2}
 .hero-orbs span{position:absolute;border-radius:50%;filter:blur(60px);opacity:.5;animation:float 8s ease-in-out infinite}
 .hero-orbs span:nth-child(1){width:400px;height:400px;background:#93c5fd;top:-100px;right:-50px}
@@ -212,18 +212,53 @@ body.cursor-on .cursor-dot{opacity:.6}
 .footer-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:768px){
+:root{--nav-h:72px}
 .nav-toggle{display:flex}
-.nav-menu{position:fixed;top:var(--nav-h);left:0;right:0;background:rgba(255,255,255,.98);backdrop-filter:blur(16px);flex-direction:column;padding:2rem;gap:1.25rem;transform:translateY(-120%);opacity:0;visibility:hidden;transition:var(--transition);box-shadow:var(--shadow)}
+.nav-menu{position:fixed;top:var(--nav-h);left:0;right:0;background:rgba(255,255,255,.98);backdrop-filter:blur(16px);flex-direction:column;padding:1.5rem;gap:1.1rem;transform:translateY(-120%);opacity:0;visibility:hidden;transition:var(--transition);box-shadow:var(--shadow);max-height:calc(100vh - var(--nav-h));overflow:auto}
 .nav-menu.open{transform:none;opacity:1;visibility:visible}
 .slider-btn.prev{left:.5rem}.slider-btn.next{right:.5rem}
 .footer-grid{grid-template-columns:1fr}
 }
 @media(max-width:480px){
-.hero-trust{gap:1.25rem}
+:root{--nav-h:68px}
+.container{width:min(1200px,94vw)}
+.section{padding:clamp(3.25rem,9vw,4.5rem) 0}
+.hero-grid{gap:2rem;padding:2.25rem 0}
+.hero-content p{font-size:1rem}
+.hero-actions{gap:.75rem}
+.btn{padding:.8rem 1.25rem}
+.btn-sm{padding:.55rem 1rem}
+.badge{font-size:.75rem}
 .floating-badge{display:none}
+.hero-trust{gap:1.25rem}
+.hero-trust strong{font-size:1.35rem}
+.hero-trust span{font-size:.78rem}
+.courses-grid{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.teachers-grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.about-grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.features-grid{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.timeline{padding-left:1.25rem}
+.timeline-item{gap:1rem}
+.t-num{min-width:2.25rem;font-size:1.25rem}
+.faq-q{padding:1rem 1.1rem;font-size:.95rem}
+.faq-item.open .faq-a{padding:0 1.1rem 1rem}
+.contact-form{padding:1.35rem}
+.contact-form input,.contact-form textarea{padding:.9rem 1rem}
+.footer{padding:3rem 0 0}
+.footer-bottom{padding:1.1rem 0}
+.toast-msg{left:1rem;right:1rem;bottom:1rem}
+.lightbox{padding:1rem}
+.lightbox-close{top:1rem;right:1rem;width:44px;height:44px}
 }
 @media(max-width:560px){
   .insc-grid{grid-template-columns:1fr}
+  .insc-body{padding:1.1rem}
+  .insc-head{padding:1rem 1.1rem}
+}
+@media(max-width:380px){
+  .nav-menu{padding:1.15rem}
+  .hero-actions .btn{width:100%}
+  .cta-inner p{font-size:1rem}
 }
 
 </style>
