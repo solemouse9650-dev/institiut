@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Cambridge School of English - Instituto de inglés en Apóstoles, Misiones. Cursos para niños, adolescentes y adultos. Metodología moderna y certificaciones internacionales.">
+<meta name="keywords" content="inglés, Apóstoles, Misiones, Cambridge, instituto, cursos de inglés">
+<meta name="author" content="Cambridge School of English">
+<title>Cambridge School of English | Instituto de Inglés en Apóstoles</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--white:#fff;--bg:#f8fafc;--bg-alt:#eef4fb;
+--blue-light:#e8f2fc;--blue:#3b82f6;--blue-deep:#1e3a5f;--blue-mid:#2563eb;
+--gray-50:#f9fafb;--gray-100:#f3f4f6;--gray-200:#e5e7eb;--gray-400:#9ca3af;--gray-600:#4b5563;--gray-800:#1f2937;
+--shadow:0 4px 24px rgba(30,58,95,.08);--shadow-lg:0 20px 50px rgba(30,58,95,.12);
+--radius:16px;--radius-sm:10px;--font:'Poppins',system-ui,sans-serif;--font-alt:'Inter',system-ui,sans-serif;
+--nav-h:76px;--transition:.35s cubic-bezier(.4,0,.2,1);
+}
+html{scroll-behavior:smooth;font-size:clamp(15px,1.1vw,17px)}
+body{font-family:var(--font);color:var(--gray-800);background:var(--white);line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block;height:auto}
+a{color:inherit;text-decoration:none}
+.container{width:min(1200px,92vw);margin:0 auto}
+.section{padding:clamp(4rem,8vw,7rem) 0}
+.section-alt{background:linear-gradient(180deg,var(--bg-alt) 0%,var(--white) 100%)}
+.section-header{text-align:center;max-width:720px;margin:0 auto 3rem}
+.section-header h2{font-family:'Montserrat',var(--font);font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:700;color:var(--blue-deep);margin:.5rem 0}
+.section-header p{color:var(--gray-600)}
+.eyebrow{display:inline-block;font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--blue-mid);background:var(--blue-light);padding:.35rem .9rem;border-radius:999px}
+.gradient-text{background:linear-gradient(135deg,var(--blue-mid),#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 1.6rem;border-radius:999px;font-weight:600;font-size:.95rem;border:2px solid transparent;transition:var(--transition);cursor:pointer}
+.btn-primary{background:linear-gradient(135deg,var(--blue-mid),var(--blue-deep));color:var(--white);box-shadow:0 8px 24px rgba(37,99,235,.35)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(37,99,235,.45)}
+.btn-outline{border-color:var(--blue-mid);color:var(--blue-deep);background:rgba(255,255,255,.7)}
+.btn-outline:hover{background:var(--blue-light)}
+.btn-light{background:var(--white);color:var(--blue-deep)}
+.btn-sm{padding:.55rem 1.1rem;font-size:.85rem}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+.page-loader{position:fixed;inset:0;background:var(--white);z-index:9999;display:flex;align-items:center;justify-content:center;transition:opacity .5s,visibility .5s}
+.page-loader.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.loader-logo{font-family:'Montserrat',sans-serif;font-weight:800;font-size:2rem;color:var(--blue-deep)}
+.loader-bar{width:120px;height:4px;background:var(--gray-200);border-radius:4px;margin-top:1rem;overflow:hidden}
+.loader-bar span{display:block;height:100%;width:40%;background:var(--blue-mid);animation:loadSlide 1s ease infinite}
+@keyframes loadSlide{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
+.cursor-dot{width:12px;height:12px;border-radius:50%;background:var(--blue-mid);position:fixed;pointer-events:none;z-index:9998;opacity:0;transition:opacity .3s,transform .15s;mix-blend-mode:multiply}
+body.cursor-on .cursor-dot{opacity:.6}
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--nav-h);transition:var(--transition)}
+.navbar.scrolled{background:rgba(255,255,255,.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:var(--shadow)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:100%}
+.logo{display:flex;align-items:center;gap:.75rem}
+.logo-mark{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--blue-mid),var(--blue-deep));color:var(--white);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.85rem;font-family:'Montserrat',sans-serif}
+.logo-text{display:flex;flex-direction:column;line-height:1.15}
+.logo-text strong{font-size:.95rem;color:var(--blue-deep)}
+.logo-text small{font-size:.65rem;color:var(--gray-600);font-weight:500}
+.nav-menu{display:flex;align-items:center;gap:1.25rem}
+.nav-menu a{font-size:.88rem;font-weight:500;color:var(--gray-600);position:relative;transition:color .25s}
+.nav-menu a:not(.btn)::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--blue-mid);transition:width .3s}
+.nav-menu a:not(.btn):hover{color:var(--blue-deep)}
+.nav-menu a:not(.btn):hover::after{width:100%}
+.nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:.5rem;cursor:pointer}
+.nav-toggle span{width:24px;height:2px;background:var(--blue-deep);transition:var(--transition);border-radius:2px}
+.nav-toggle.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.nav-toggle.active span:nth-child(2){opacity:0}
+.nav-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:var(--nav-h);position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,var(--blue-light) 0%,var(--white) 45%,#dbeafe 100%);z-index:-2}
+.hero-orbs span{position:absolute;border-radius:50%;filter:blur(60px);opacity:.5;animation:float 8s ease-in-out infinite}
+.hero-orbs span:nth-child(1){width:400px;height:400px;background:#93c5fd;top:-100px;right:-50px}
+.hero-orbs span:nth-child(2){width:300px;height:300px;background:#bfdbfe;bottom:10%;left:-80px;animation-delay:-3s}
+.hero-orbs span:nth-child(3){width:200px;height:200px;background:#dbeafe;top:40%;right:30%;animation-delay:-5s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;padding:3rem 0}
+.hero-content h1{font-family:'Montserrat',sans-serif;font-size:clamp(2rem,4.5vw,3.25rem);font-weight:800;line-height:1.15;color:var(--blue-deep);margin:1rem 0}
+.hero-content p{font-size:1.05rem;color:var(--gray-600);max-width:520px;margin-bottom:1.5rem}
+.badge{display:inline-block;background:rgba(255,255,255,.8);backdrop-filter:blur(8px);padding:.4rem 1rem;border-radius:999px;font-size:.8rem;font-weight:600;color:var(--blue-deep);border:1px solid rgba(37,99,235,.15)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:2rem}
+.hero-trust{display:flex;gap:2rem;flex-wrap:wrap}
+.hero-trust strong{display:block;font-size:1.5rem;color:var(--blue-deep)}
+.hero-trust span{font-size:.8rem;color:var(--gray-600)}
+.glass-card{background:rgba(255,255,255,.65);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.8);border-radius:var(--radius);box-shadow:var(--shadow-lg);padding:1rem;position:relative}
+.hero-card img{border-radius:calc(var(--radius) - 4px);width:100%;aspect-ratio:4/3;object-fit:cover}
+.floating-badge{position:absolute;display:flex;align-items:center;gap:.5rem;background:var(--white);padding:.6rem 1rem;border-radius:var(--radius-sm);box-shadow:var(--shadow);font-size:.8rem;font-weight:600;color:var(--blue-deep);animation:float 6s ease-in-out infinite}
+.floating-badge svg{width:18px;height:18px;color:var(--blue-mid)}
+.fb1{top:12%;left:-8%}
+.fb2{bottom:15%;right:-5%;animation-delay:-2s}
+.about-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
+.about-card{background:var(--white);padding:2rem;border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--gray-100);transition:var(--transition)}
+.about-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.icon-wrap{font-size:2rem;margin-bottom:1rem}
+.about-card h3{font-size:1.15rem;color:var(--blue-deep);margin-bottom:.75rem}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem}
+.feature-card{background:var(--white);padding:1.75rem;border-radius:var(--radius);border:1px solid var(--gray-100);transition:var(--transition)}
+.feature-card:hover{border-color:var(--blue-light);box-shadow:var(--shadow);transform:translateY(-4px)}
+.f-icon{width:48px;height:48px;border-radius:12px;background:var(--blue-light);display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
+.f-icon svg{width:24px;height:24px;stroke:var(--blue-mid);fill:none;stroke-width:2}
+.feature-card h3{font-size:1rem;color:var(--blue-deep);margin-bottom:.5rem}
+.courses-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+.course-card{background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--gray-100);transition:var(--transition)}
+.course-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
+.course-card .cc-head{padding:1.5rem;background:linear-gradient(135deg,var(--blue-deep),var(--blue-mid));color:var(--white)}
+.course-card .cc-body{padding:1.5rem}
+.course-card ul{list-style:none;margin-top:1rem}
+.course-card li{display:flex;justify-content:space-between;padding:.4rem 0;border-bottom:1px dashed var(--gray-200);font-size:.9rem}
+.course-card li span{color:var(--gray-600)}
+.timeline{max-width:800px;margin:0 auto;position:relative;padding-left:2rem}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(var(--blue-mid),var(--blue-light));border-radius:3px}
+.timeline-item{display:flex;gap:1.5rem;margin-bottom:2rem;position:relative}
+.timeline-item::before{content:'';position:absolute;left:-2rem;top:.5rem;width:12px;height:12px;background:var(--blue-mid);border-radius:50%;border:3px solid var(--white);box-shadow:0 0 0 3px var(--blue-light)}
+.t-num{font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.5rem;color:var(--blue-light);min-width:3rem}
+.timeline-item h3{color:var(--blue-deep);margin-bottom:.35rem}
+.teachers-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
+.teacher-card{background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);text-align:center;transition:var(--transition)}
+.teacher-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.teacher-card img{width:100%;aspect-ratio:1;object-fit:cover}
+.teacher-card .tc-body{padding:1.5rem}
+.teacher-card h3{color:var(--blue-deep);margin-bottom:.25rem}
+.teacher-card .spec{color:var(--blue-mid);font-size:.85rem;font-weight:600;margin-bottom:.75rem}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
+.gallery-item{position:relative;border-radius:var(--radius-sm);overflow:hidden;aspect-ratio:4/3;cursor:pointer}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.gallery-item::after{content:'';position:absolute;inset:0;background:linear-gradient(transparent 50%,rgba(30,58,95,.6));opacity:0;transition:opacity .35s}
+.gallery-item:hover img{transform:scale(1.08)}
+.gallery-item:hover::after{opacity:1}
+.gallery-item span{position:absolute;bottom:.75rem;left:.75rem;color:var(--white);font-weight:600;font-size:.85rem;z-index:1;opacity:0;transform:translateY(8px);transition:var(--transition)}
+.gallery-item:hover span{opacity:1;transform:none}
+.stats-section{background:linear-gradient(135deg,var(--blue-deep),#2d4a6f);color:var(--white);padding:4rem 0}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2rem;text-align:center}
+.stat-num{font-family:'Montserrat',sans-serif;font-size:clamp(2.5rem,5vw,3.5rem);font-weight:800;display:block}
+.stat-card p{opacity:.85;margin-top:.5rem}
+.testimonial-slider{position:relative;max-width:800px;margin:0 auto}
+.slider-track{overflow:hidden;border-radius:var(--radius)}
+.slider-inner{display:flex;transition:transform .5s ease}
+.test-card{min-width:100%;padding:2.5rem;background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);text-align:center}
+.test-card .stars{color:#fbbf24;font-size:1.25rem;margin-bottom:1rem}
+.test-card p{font-style:italic;color:var(--gray-600);margin-bottom:1.5rem;font-size:1.05rem}
+.test-card .author{display:flex;align-items:center;justify-content:center;gap:1rem}
+.test-card img{width:56px;height:56px;border-radius:50%;object-fit:cover}
+.slider-btn{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:none;background:var(--white);box-shadow:var(--shadow);font-size:1.5rem;cursor:pointer;color:var(--blue-deep);z-index:2;transition:var(--transition)}
+.slider-btn:hover{background:var(--blue-mid);color:var(--white)}
+.slider-btn.prev{left:-1rem}
+.slider-btn.next{right:-1rem}
+.slider-dots{display:flex;justify-content:center;gap:.5rem;margin-top:1.5rem}
+.slider-dots button{width:10px;height:10px;border-radius:50%;border:none;background:var(--gray-200);cursor:pointer;transition:var(--transition)}
+.slider-dots button.active{background:var(--blue-mid);transform:scale(1.2)}
+.faq-list{max-width:760px;margin:0 auto}
+.faq-item{background:var(--white);border-radius:var(--radius-sm);margin-bottom:.75rem;border:1px solid var(--gray-100);overflow:hidden}
+.faq-q{width:100%;padding:1.25rem 1.5rem;background:none;border:none;text-align:left;font-family:var(--font);font-weight:600;font-size:1rem;color:var(--blue-deep);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.faq-q::after{content:'+';font-size:1.25rem;color:var(--blue-mid);transition:transform .3s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .4s}
+.faq-item.open .faq-a{max-height:200px;padding:0 1.5rem 1.25rem}
+.faq-a p{color:var(--gray-600);font-size:.95rem}
+.cta-final{padding:clamp(4rem,10vw,6rem) 0;background:linear-gradient(135deg,var(--blue-deep) 0%,var(--blue-mid) 100%);text-align:center;color:var(--white)}
+.cta-inner h2{font-family:'Montserrat',sans-serif;font-size:clamp(1.75rem,4vw,2.75rem);margin-bottom:1rem}
+.cta-inner p{opacity:.9;margin-bottom:2rem;font-size:1.1rem}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.contact-list{list-style:none;margin-top:1.5rem}
+.contact-list li{margin-bottom:1rem;color:var(--gray-600)}
+.contact-list a{color:var(--blue-mid);font-weight:500}
+.contact-form{display:flex;flex-direction:column;gap:1rem;background:var(--bg-alt);padding:2rem;border-radius:var(--radius);box-shadow:var(--shadow)}
+.contact-form input,.contact-form textarea{padding:1rem 1.15rem;border:1px solid var(--gray-200);border-radius:var(--radius-sm);font-family:var(--font);font-size:1rem;transition:border .25s,box-shadow .25s}
+.contact-form input:focus,.contact-form textarea:focus{outline:none;border-color:var(--blue-mid);box-shadow:0 0 0 3px rgba(37,99,235,.15)}
+.footer{background:var(--blue-deep);color:rgba(255,255,255,.85);padding:4rem 0 0}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;padding-bottom:3rem}
+.footer h4{color:var(--white);margin-bottom:1rem;font-size:1rem}
+.footer ul{list-style:none}
+.footer ul a,.footer p{font-size:.9rem;opacity:.8;transition:opacity .25s}
+.footer ul a:hover{opacity:1}
+.footer .logo-text strong,.footer .logo-text small{color:var(--white)}
+.social-links{display:flex;gap:.75rem;margin-top:1.25rem}
+.social-links a{width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;transition:var(--transition)}
+.social-links a:hover{background:var(--blue-mid);transform:translateY(-3px)}
+.social-links svg{width:20px;height:20px;stroke:var(--white);fill:none;stroke-width:2}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding:1.5rem 0;text-align:center;font-size:.85rem;opacity:.7}
+.lightbox{position:fixed;inset:0;background:rgba(30,58,95,.92);z-index:2000;display:flex;align-items:center;justify-content:center;padding:2rem;opacity:0;visibility:hidden;transition:var(--transition)}
+.lightbox.active{opacity:1;visibility:visible}
+.lightbox img{max-width:90vw;max-height:85vh;border-radius:var(--radius);box-shadow:var(--shadow-lg)}
+.lightbox-close{position:absolute;top:1.5rem;right:1.5rem;width:48px;height:48px;border:none;border-radius:50%;background:var(--white);font-size:1.75rem;cursor:pointer;color:var(--blue-deep)}
+.toast-msg{position:fixed;bottom:2rem;right:2rem;background:var(--blue-deep);color:var(--white);padding:1rem 1.5rem;border-radius:var(--radius-sm);box-shadow:var(--shadow-lg);z-index:3000;transform:translateY(120%);transition:transform .4s ease}
+.toast-msg.show{transform:translateY(0)}
+
+/* Modal de inscripción */
+.insc-overlay{position:fixed;inset:0;background:rgba(15,23,42,.55);z-index:2500;display:flex;align-items:center;justify-content:center;padding:1.25rem;opacity:0;visibility:hidden;transition:var(--transition)}
+.insc-overlay.open{opacity:1;visibility:visible}
+.insc-modal{width:min(560px,96vw);background:var(--white);border-radius:18px;box-shadow:var(--shadow-lg);border:1px solid var(--gray-100);overflow:hidden;transform:scale(.96);transition:transform .25s ease}
+.insc-overlay.open .insc-modal{transform:scale(1)}
+.insc-head{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.5rem;background:linear-gradient(135deg,var(--blue-deep),var(--blue-mid));color:var(--white)}
+.insc-head h3{font-family:'Montserrat',sans-serif;font-size:1.15rem}
+.insc-close{width:44px;height:44px;border:none;border-radius:12px;background:rgba(255,255,255,.16);color:var(--white);font-size:1.75rem;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.insc-body{padding:1.5rem}
+.insc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.insc-grid .full{grid-column:1/-1}
+.insc-grid label{display:block;font-size:.8rem;font-weight:600;color:var(--gray-600);margin-bottom:.35rem}
+.insc-grid input,.insc-grid select,.insc-grid textarea{width:100%;padding:.9rem 1rem;border:1px solid var(--gray-200);border-radius:var(--radius-sm);font-family:var(--font);font-size:1rem}
+.insc-actions{display:flex;justify-content:flex-end;gap:.75rem;margin-top:1.25rem;flex-wrap:wrap}
+.insc-note{margin-top:.75rem;color:var(--gray-600);font-size:.85rem}
+.insc-check{display:flex;gap:.6rem;align-items:flex-start;margin-top:.75rem}
+.insc-check input{margin-top:.2rem}
+.insc-check span{font-size:.85rem;color:var(--gray-600)}
+@media(max-width:1024px){
+.hero-grid{grid-template-columns:1fr;text-align:center}
+.hero-content p{margin:0 auto 1.5rem}
+.hero-actions,.hero-trust{justify-content:center}
+.hero-visual{max-width:500px;margin:0 auto}
+.fb1{left:5%}.fb2{right:5%}
+.contact-grid{grid-template-columns:1fr}
+.footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+.nav-toggle{display:flex}
+.nav-menu{position:fixed;top:var(--nav-h);left:0;right:0;background:rgba(255,255,255,.98);backdrop-filter:blur(16px);flex-direction:column;padding:2rem;gap:1.25rem;transform:translateY(-120%);opacity:0;visibility:hidden;transition:var(--transition);box-shadow:var(--shadow)}
+.nav-menu.open{transform:none;opacity:1;visibility:visible}
+.slider-btn.prev{left:.5rem}.slider-btn.next{right:.5rem}
+.footer-grid{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+.hero-trust{gap:1.25rem}
+.floating-badge{display:none}
+}
+@media(max-width:560px){
+  .insc-grid{grid-template-columns:1fr}
+}
+
+</style>
+</head>
+<body>
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+<div class="page-loader" id="pageLoader"><div class="loader-brand"><span class="loader-logo">CSE</span><div class="loader-bar"><span></span></div></div></div>
+
+<header class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <a href="#inicio" class="logo" aria-label="Cambridge School of English - Inicio">
+      <span class="logo-mark">CSE</span>
+      <span class="logo-text"><strong>Cambridge</strong><small>School of English</small></span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu" id="navMenu">
+      <a href="#inicio">Inicio</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#cursos">Cursos</a>
+      <a href="#docentes">Docentes</a>
+      <a href="#galeria">Galería</a>
+      <a href="#metodologia">Metodología</a>
+      <a href="#testimonios">Testimonios</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contacto">Contacto</a>
+      <a href="#contacto" class="btn btn-primary btn-sm">Inscripciones Abiertas</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-orbs" aria-hidden="true"><span></span><span></span><span></span></div>
+  <div class="container hero-grid">
+    <div class="hero-content reveal">
+      <span class="badge">Apóstoles, Misiones · Argentina</span>
+      <h1>Aprendé inglés con <span class="gradient-text">excelencia académica</span> y metodología moderna</h1>
+      <p>Cambridge School of English forma estudiantes con estándares internacionales, docentes especializados y un ambiente profesional pensado para tu desarrollo integral.</p>
+      <div class="hero-actions">
+        <a href="#contacto" class="btn btn-primary">Contactar</a>
+        <a href="#cursos" class="btn btn-outline">Ver Cursos</a>
+      </div>
+      <div class="hero-trust">
+        <div><strong>+300</strong><span>Alumnos</span></div>
+        <div><strong>+10</strong><span>Años</span></div>
+        <div><strong>95%</strong><span>Satisfacción</span></div>
+      </div>
+    </div>
+    <div class="hero-visual reveal">
+      <div class="glass-card hero-card">
+        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&q=80" alt="Estudiantes aprendiendo inglés" width="800" height="600" loading="eager" decoding="async">
+        <div class="floating-badge fb1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Certificaciones</div>
+        <div class="floating-badge fb2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> Grupos reducidos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="nosotros">
+  <div class="container">
+    <div class="section-header reveal"><span class="eyebrow">Sobre Nosotros</span><h2>Una institución comprometida con la excelencia</h2><p>Historia, filosofía y objetivos que nos posicionan como referencia en Apóstoles.</p></div>
+    <div class="about-grid">
+      <article class="about-card reveal"><div class="icon-wrap">📚</div><h3>Nuestra Historia</h3><p>Cambridge School of English nació con la misión de acercar una educación de inglés de calidad internacional a Apóstoles. A lo largo de más de una década, formamos cientos de estudiantes con resultados reales.</p></article>
+      <article class="about-card reveal"><div class="icon-wrap">🎯</div><h3>Filosofía Educativa</h3><p>Creemos en el aprendizaje activo, la comunicación auténtica y el acompañamiento personalizado. Cada alumno es protagonista de su proceso.</p></article>
+      <article class="about-card reveal"><div class="icon-wrap">🌍</div><h3>Objetivos</h3><p>Desarrollar competencias lingüísticas sólidas, preparar para certificaciones internacionales y abrir puertas académicas y profesionales.</p></article>
+      <article class="about-card reveal"><div class="icon-wrap">✨</div><h3>Compromiso Académico</h3><p>Programas actualizados, evaluación continua y formación integral que integra cultura, pensamiento crítico y confianza al hablar.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="porque">
+  <div class="container">
+    <div class="section-header reveal"><span class="eyebrow">Ventajas</span><h2>¿Por qué elegir Cambridge?</h2></div>
+    <div class="features-grid">
+      <div class="feature-card reveal"><div class="f-icon"><svg viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg></div><h3>Profesores capacitados</h3><p>Docentes con formación pedagógica y experiencia en enseñanza de inglés.</p></div>
+      <div class="feature-card reveal"><div class="f-icon"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div><h3>Seguimiento personalizado</h3><p>Monitoreo del progreso y feedback constante para cada estudiante.</p></div>
+      <div class="feature-card reveal"><div class="f-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div><h3>Ambiente profesional</h3><p>Instalaciones modernas y clima de respeto que favorece el aprendizaje.</p></div>
+      <div class="feature-card reveal"><div class="f-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><h3>Certificaciones</h3><p>Preparación para exámenes internacionales y validación de niveles.</p></div>
+      <div class="feature-card reveal"><div class="f-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><h3>Clases dinámicas</h3><p>Actividades interactivas, role-play y práctica comunicativa real.</p></div>
+      <div class="feature-card reveal"><div class="f-icon"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg></div><h3>Metodología moderna</h3><p>Enfoque comunicativo con material digital y recursos actualizados.</p></div>
+      <div class="feature-card reveal"><div class="f-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><h3>Grupos reducidos</h3><p>Cupos limitados para atención individual y mayor participación.</p></div>
+      <div class="feature-card reveal"><div class="f-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div><h3>Aprendizaje real</h3><p>Resultados medibles en speaking, listening, reading y writing.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="cursos">
+  <div class="container">
+    <div class="section-header reveal"><span class="eyebrow">Programas</span><h2>Nuestros Cursos</h2><p>Programas diseñados para cada etapa y objetivo de aprendizaje.</p></div>
+    <div class="courses-grid" id="coursesGrid"></div>
+  </div>
+</section>
+
+<section class="section section-alt" id="metodologia">
+  <div class="container">
+    <div class="section-header reveal"><span class="eyebrow">Metodología</span><h2>Aprendizaje integral y práctico</h2></div>
+    <div class="timeline">
+      <div class="timeline-item reveal"><span class="t-num">01</span><div><h3>Speaking & Listening</h3><p>Desarrollo de fluidez oral y comprensión auditiva con situaciones reales y audio auténtico.</p></div></div>
+      <div class="timeline-item reveal"><span class="t-num">02</span><div><h3>Reading & Writing</h3><p>Lectura crítica y producción escrita estructurada con corrección personalizada.</p></div></div>
+      <div class="timeline-item reveal"><span class="t-num">03</span><div><h3>Clases prácticas</h3><p>Talleres, debates y proyectos colaborativos que activan el idioma en contexto.</p></div></div>
+      <div class="timeline-item reveal"><span class="t-num">04</span><div><h3>Participación activa</h3><p>El alumno habla desde el primer día con dinámicas que reducen la inhibición.</p></div></div>
+      <div class="timeline-item reveal"><span class="t-num">05</span><div><h3>Evaluaciones</h3><p>Assessment formativo y sumativo alineado a estándares internacionales.</p></div></div>
+      <div class="timeline-item reveal"><span class="t-num">06</span><div><h3>Material digital</h3><p>Plataforma complementaria, recursos multimedia y seguimiento online.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="docentes">
+  <div class="container">
+    <div class="section-header reveal"><span class="eyebrow">Equipo</span><h2>Nuestros Docentes</h2></div>
+    <div class="teachers-grid" id="teachersGrid"></div>
+  </div>
+</section>
+
+<section class="section section-alt" id="galeria">
+  <div class="container">
+    <div class="section-header reveal"><span class="eyebrow">Galería</span><h2>Vida institucional</h2></div>
+    <div class="gallery-grid" id="galleryGrid"></div>
+  </div>
+</section>
+
+<section class="section stats-section">
+  <div class="container stats-grid">
+    <div class="stat-card reveal"><span class="stat-num" data-target="300" data-suffix="+">0</span><p>Alumnos formados</p></div>
+    <div class="stat-card reveal"><span class="stat-num" data-target="10" data-suffix="+">0</span><p>Años enseñando</p></div>
+    <div class="stat-card reveal"><span class="stat-num" data-target="15" data-suffix="+">0</span><p>Cursos activos</p></div>
+    <div class="stat-card reveal"><span class="stat-num" data-target="95" data-suffix="%">0</span><p>Satisfacción</p></div>
+  </div>
+</section>
+
+<section class="section" id="testimonios">
+  <div class="container">
+    <div class="section-header reveal"><span class="eyebrow">Testimonios</span><h2>Lo que dicen nuestros estudiantes</h2></div>
+    <div class="testimonial-slider">
+      <button class="slider-btn prev" id="testPrev" aria-label="Anterior">‹</button>
+      <div class="slider-track" id="testTrack"></div>
+      <button class="slider-btn next" id="testNext" aria-label="Siguiente">›</button>
+      <div class="slider-dots" id="testDots"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="faq">
+  <div class="container">
+    <div class="section-header reveal"><span class="eyebrow">FAQ</span><h2>Preguntas frecuentes</h2></div>
+    <div class="faq-list" id="faqList"></div>
+  </div>
+</section>
+
+<section class="cta-final">
+  <div class="container cta-inner reveal">
+    <h2>Tu futuro en inglés comienza hoy</h2>
+    <p>Sumate a Cambridge School of English y alcanzá tus metas con acompañamiento profesional.</p>
+    <a href="#" class="btn btn-light" id="openInscripcionBtn" data-open-inscripcion="1">Inscribite ahora</a>
+  </div>
+</section>
+
+<section class="section" id="contacto">
+  <div class="container contact-grid">
+    <div class="reveal">
+      <span class="eyebrow">Contacto</span>
+      <h2>Estamos para ayudarte</h2>
+      <ul class="contact-list">
+        <li><strong>Dirección:</strong> Apóstoles, Misiones, Argentina</li>
+        <li><strong>Email:</strong> <a href="mailto:info@cambridgeschool.com.ar">info@cambridgeschool.com.ar</a></li>
+        <li><strong>WhatsApp:</strong> <a href="https://wa.me/5493758502801" target="_blank" rel="noopener">+54 3758 502801</a></li>
+        <li><strong>Horarios:</strong> Lun–Vie 08:00–12:00 / 16:00–21:00 · Sáb 09:00–13:00</li>
+      </ul>
+    </div>
+    <form class="contact-form reveal" id="contactForm">
+      <input type="text" name="nombre" placeholder="Nombre completo" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="tel" name="telefono" placeholder="Teléfono">
+      <textarea name="mensaje" rows="4" placeholder="Tu consulta" required></textarea>
+      <button type="submit" class="btn btn-primary">Enviar consulta</button>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a href="#inicio" class="logo"><span class="logo-mark">CSE</span><span class="logo-text"><strong>Cambridge</strong><small>School of English</small></span></a>
+      <p>Instituto de inglés en Apóstoles, Misiones. Educación de calidad con estándares internacionales.</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3.64l.36-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        <a href="https://wa.me/5493758502801" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></a>
+        <a href="mailto:info@cambridgeschool.com.ar" aria-label="Gmail"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg></a>
+      </div>
+    </div>
+    <div><h4>Enlaces</h4><ul><li><a href="#inicio">Inicio</a></li><li><a href="#nosotros">Nosotros</a></li><li><a href="#cursos">Cursos</a></li><li><a href="#metodologia">Metodología</a></li></ul></div>
+    <div><h4>Instituto</h4><ul><li><a href="#docentes">Docentes</a></li><li><a href="#galeria">Galería</a></li><li><a href="#faq">FAQ</a></li><li><a href="admin.html">Panel Admin</a></li></ul></div>
+    <div><h4>Horarios</h4><p>Lun–Vie: 08:00–12:00 / 16:00–21:00<br>Sáb: 09:00–13:00</p></div>
+  </div>
+  <div class="footer-bottom"><p>© <span id="year"></span> Cambridge School of English. Todos los derechos reservados.</p></div>
+</footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" hidden>
+  <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar">×</button>
+  <img src="" alt="" id="lightboxImg">
+</div>
+
+<!-- Modal inscripción -->
+<div class="insc-overlay" id="inscOverlay" role="dialog" aria-modal="true" aria-label="Solicitud de inscripción">
+  <div class="insc-modal" role="document">
+    <div class="insc-head">
+      <h3>Solicitar acceso</h3>
+      <button class="insc-close" id="inscCloseBtn" aria-label="Cerrar">×</button>
+    </div>
+    <div class="insc-body">
+      <form id="inscForm">
+        <div class="insc-grid">
+          <div class="full">
+            <label for="i_nombre">Nombre</label>
+            <input id="i_nombre" name="nombre" autocomplete="name" required>
+          </div>
+          <div>
+            <label for="i_edad">Edad</label>
+            <input id="i_edad" name="edad" type="number" min="5" max="99" required>
+          </div>
+          <div>
+            <label for="i_telefono">Número de teléfono (WhatsApp)</label>
+            <input id="i_telefono" name="telefono" type="tel" autocomplete="tel" required placeholder="Ej: 3758502801">
+          </div>
+          <div>
+            <label for="i_nivel">Nivel de inglés</label>
+            <select id="i_nivel" name="nivel" required>
+              <option value="" selected disabled>Seleccioná una opción</option>
+              <option>Sin conocimientos</option>
+              <option>Inicial (A1)</option>
+              <option>Básico (A2)</option>
+              <option>Intermedio (B1)</option>
+              <option>Intermedio alto (B2)</option>
+              <option>Avanzado (C1+)</option>
+            </select>
+          </div>
+          <div class="full">
+            <label for="i_email">Email</label>
+            <input id="i_email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="full">
+            <label for="i_curso">Curso de interés</label>
+            <input id="i_curso" name="curso" placeholder="Ej: Niños / Adolescentes / Adultos / Exámenes">
+          </div>
+          <div class="full">
+            <label for="i_obs">Observaciones</label>
+            <textarea id="i_obs" name="observaciones" rows="3" placeholder="Contanos cualquier detalle (horarios, objetivo, etc.)"></textarea>
+          </div>
+        </div>
+        <div class="insc-check">
+          <input type="checkbox" id="i_ok" required>
+          <span>Confirmo que los datos ingresados son correctos.</span>
+        </div>
+        <div class="insc-actions">
+          <button type="button" class="btn btn-outline" id="inscCancelBtn">Cancelar</button>
+          <button type="submit" class="btn btn-primary" id="inscSubmitBtn">Enviar solicitud</button>
+        </div>
+        <p class="insc-note">La solicitud se enviará y quedará registrada para que el instituto se comunique con vos.</p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+'use strict';
+const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
+const INSTITUTE_WA_NUMBER_RAW='3758502801';
+// Pegá acá la URL del Web App de Google Apps Script (la que termina en /exec)
+const INSCRIPCION_SHEETS_WEBAPP_URL='https://script.google.com/macros/s/AKfycbxu6p-z3BD-5kCwpMBu4mJrN-ZuZ8vzoVuMXBjXp1r4_4vOJnldMa0RlsTaOMhL99H3bw/exec';
+
+function normalizeWhatsappNumber(raw){
+  let d=String(raw||'').replace(/\D/g,'');
+  if(!d) return '';
+  // Si ya viene con 54/549, lo dejamos
+  if(d.startsWith('549')) return d;
+  if(d.startsWith('54')) return d;
+  // Heurística Argentina (interior): si pasan 10 dígitos, asumimos móvil y agregamos 549
+  if(d.length===10) return '549'+d;
+  // Si pasan 11 con 0 adelante (0 + área + número), quitamos 0 y agregamos 549
+  if(d.length===11 && d.startsWith('0')) return '549'+d.slice(1);
+  return d;
+}
+function openWhatsapp(rawNumber,text){
+  const number=normalizeWhatsappNumber(rawNumber);
+  if(!number){showToast('Número de WhatsApp inválido');return;}
+  const url='https://wa.me/'+number+'?text='+encodeURIComponent(text||'');
+  window.open(url,'_blank','noopener');
+}
+async function postToSheets(url,data){
+  const body=new URLSearchParams(data);
+  // Intento “normal” (si el Web App devuelve CORS OK, podemos leer respuesta)
+  try{
+    const res=await fetch(url,{
+      method:'POST',
+      headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},
+      body
+    });
+    // Aunque no podamos leer por CORS en algunos casos, si res existe, seguimos
+    if(res && res.ok) return true;
+  }catch(_e){}
+  // Fallback silencioso sin CORS (igual envía)
+  try{
+    await fetch(url,{method:'POST',mode:'no-cors',body});
+    return true;
+  }catch(_e2){
+    return false;
+  }
+}
+const courses=[
+{id:1,title:'Niños',level:'Starter – Elementary',duration:'Anual',modality:'Presencial',schedule:'Lun/Mié 16:00–17:30',desc:'Inglés lúdico y comunicativo para los más chicos con juegos, canciones y proyectos.'},
+{id:2,title:'Adolescentes',level:'Pre-Intermediate – Upper',duration:'Anual',modality:'Presencial',schedule:'Mar/Jue 17:30–19:00',desc:'Programa orientado a certificaciones y comunicación real para secundaria.'},
+{id:3,title:'Adultos',level:'Todos los niveles',duration:'Semestral',modality:'Presencial',schedule:'Lun/Mié 19:00–21:00',desc:'Clases para profesionales y público general con foco en fluidez y uso práctico.'},
+{id:4,title:'Preparación Internacional',level:'B1 – C1',duration:'Intensivo 6 meses',modality:'Híbrido',schedule:'Sáb 09:00–13:00',desc:'Preparación Cambridge, IELTS y exámenes internacionales con simulacros.'},
+{id:5,title:'Conversación',level:'Intermediate+',duration:'Trimestral',modality:'Presencial',schedule:'Vie 18:00–19:30',desc:'Taller de speaking con temas actuales, debate y pronunciación.'},
+{id:6,title:'Intensivos',level:'A definir',duration:'4–8 semanas',modality:'Presencial',schedule:'Horario a coordinar',desc:'Cursos acelerados en vacaciones para avanzar un nivel completo.'}
+];
+const teachers=[
+{name:'Prof. Laura Méndez',spec:'Kids & Teens',exp:'12 años',desc:'Especialista en didáctica infantil y exámenes Cambridge Young Learners.',img:'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80'},
+{name:'Prof. James Wilson',spec:'Adults & Conversation',exp:'15 años',desc:'Nativo con experiencia en business English y preparación FCE/CAE.',img:'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80'},
+{name:'Prof. Ana Rodríguez',spec:'International Exams',exp:'10 años',desc:'Coordinadora académica enfocada en evaluación y certificaciones.',img:'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80'},
+{name:'Prof. Martín Costa',spec:'Intensivos',exp:'8 años',desc:'Metodología acelerada y refuerzo personalizado para todos los niveles.',img:'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80'}
+];
+const gallery=[
+{src:'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&q=80',label:'Aulas modernas'},
+{src:'https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=600&q=80',label:'Actividades'},
+{src:'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=80',label:'Clases grupales'},
+{src:'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&q=80',label:'Eventos'},
+{src:'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=80',label:'Estudiantes'},
+{src:'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80',label:'Material digital'}
+];
+const testimonials=[
+{text:'Cambridge cambió mi forma de aprender inglés. Las clases son dinámicas y los profesores excelentes.',name:'María G.',role:'Adultos B2',img:'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80'},
+{text:'Mi hijo disfruta cada clase. Se nota el seguimiento personalizado y el ambiente profesional.',name:'Carlos R.',role:'Padre – Kids',img:'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80'},
+{text:'Aprobé mi examen FCE gracias a la preparación intensiva. Totalmente recomendable.',name:'Lucía P.',role:'Teens FCE',img:'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80'}
+];
+const faqs=[
+{q:'¿Cómo me inscribo?',a:'Contactanos por WhatsApp, email o completá el formulario. Te asignamos un nivel mediante entrevista o placement test gratuito.'},
+{q:'¿Qué horarios hay disponibles?',a:'Ofrecemos turnos mañana, tarde y noche de lunes a sábado según el curso elegido.'},
+{q:'¿Cómo se determina mi nivel?',a:'Realizamos una evaluación diagnóstica oral y escrita para ubicarte en el grupo adecuado.'},
+{q:'¿Entregan certificados?',a:'Sí, certificado institucional al finalizar cada nivel y preparación para exámenes internacionales.'},
+{q:'¿Hay modalidad online?',a:'Algunos programas ofrecen modalidad híbrida. Consultá disponibilidad actual.'}
+];
+function renderCourses(){
+const g=$('#coursesGrid');if(!g)return;
+g.innerHTML=courses.map(c=>`<article class="course-card reveal"><div class="cc-head"><h3>${c.title}</h3><p>${c.desc}</p></div><div class="cc-body"><ul><li><span>Nivel</span><strong>${c.level}</strong></li><li><span>Duración</span><strong>${c.duration}</strong></li><li><span>Modalidad</span><strong>${c.modality}</strong></li><li><span>Horarios</span><strong>${c.schedule}</strong></li></ul></div></article>`).join('');
+}
+function renderTeachers(){
+const g=$('#teachersGrid');if(!g)return;
+g.innerHTML=teachers.map(t=>`<article class="teacher-card reveal"><img src="${t.img}" alt="${t.name}" loading="lazy" width="400" height="400"><div class="tc-body"><h3>${t.name}</h3><p class="spec">${t.spec}</p><p>${t.desc}</p><small><strong>${t.exp}</strong> de experiencia</small></div></article>`).join('');
+}
+function renderGallery(){
+const g=$('#galleryGrid');if(!g)return;
+g.innerHTML=gallery.map((item,i)=>`<div class="gallery-item reveal" data-idx="${i}"><img src="${item.src}" alt="${item.label}" loading="lazy" width="600" height="450"><span>${item.label}</span></div>`).join('');
+g.querySelectorAll('.gallery-item').forEach(el=>el.addEventListener('click',()=>openLightbox(el.querySelector('img').src,el.querySelector('img').alt)));
+}
+let testIdx=0;
+function renderTestimonials(){
+const track=$('#testTrack'),dots=$('#testDots');if(!track)return;
+track.innerHTML=`<div class="slider-inner" id="sliderInner">${testimonials.map(t=>`<div class="test-card"><div class="stars">★★★★★</div><p>"${t.text}"</p><div class="author"><img src="${t.img}" alt="${t.name}" loading="lazy" width="56" height="56"><div><strong>${t.name}</strong><br><small>${t.role}</small></div></div></div>`).join('')}</div>`;
+dots.innerHTML=testimonials.map((_,i)=>`<button type="button" data-i="${i}" class="${i===0?'active':''}" aria-label="Testimonio ${i+1}"></button>`).join('');
+dots.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>goTest(+b.dataset.i)));
+$('#testPrev')?.addEventListener('click',()=>goTest(testIdx-1));
+$('#testNext')?.addEventListener('click',()=>goTest(testIdx+1));
+}
+function goTest(i){
+testIdx=(i+testimonials.length)%testimonials.length;
+const inner=$('#sliderInner');
+if(inner)inner.style.transform=`translateX(-${testIdx*100}%)`;
+$$('#testDots button').forEach((b,j)=>b.classList.toggle('active',j===testIdx));
+}
+function renderFaq(){
+const list=$('#faqList');if(!list)return;
+list.innerHTML=faqs.map((f,i)=>`<div class="faq-item" data-i="${i}"><button class="faq-q" type="button">${f.q}</button><div class="faq-a"><p>${f.a}</p></div></div>`).join('');
+list.querySelectorAll('.faq-q').forEach(btn=>btn.addEventListener('click',()=>{
+const item=btn.parentElement,open=item.classList.contains('open');
+list.querySelectorAll('.faq-item').forEach(x=>x.classList.remove('open'));
+if(!open)item.classList.add('open');
+}));
+}
+function openLightbox(src,alt){
+const lb=$('#lightbox'),img=$('#lightboxImg');
+if(!lb||!img)return;
+img.src=src;img.alt=alt;lb.hidden=false;requestAnimationFrame(()=>lb.classList.add('active'));
+}
+$('#lightboxClose')?.addEventListener('click',closeLightbox);
+$('#lightbox')?.addEventListener('click',e=>{if(e.target.id==='lightbox')closeLightbox();});
+function closeLightbox(){const lb=$('#lightbox');lb?.classList.remove('active');setTimeout(()=>{if(lb)lb.hidden=true;},350);}
+const nav=$('#navbar'),toggle=$('#navToggle'),menu=$('#navMenu');
+toggle?.addEventListener('click',()=>{
+const open=menu.classList.toggle('open');
+toggle.classList.toggle('active',open);
+toggle.setAttribute('aria-expanded',open);
+});
+menu?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');toggle?.classList.remove('active');}));
+window.addEventListener('scroll',()=>nav?.classList.toggle('scrolled',window.scrollY>40),{passive:true});
+const revealObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revealObs.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+function observeReveal(){document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));}
+const statObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.stat-num').forEach(animateCount);statObs.unobserve(e.target);}});},{threshold:.3});
+function animateCount(el){
+const target=+el.dataset.target,suffix=el.dataset.suffix||'';
+const dur=2000,start=performance.now();
+function step(now){
+const p=Math.min((now-start)/dur,1);
+el.textContent=Math.floor(target*(1-Math.pow(1-p,3)))+suffix;
+if(p<1)requestAnimationFrame(step);
+}
+requestAnimationFrame(step);
+}
+$('.stats-grid')&&statObs.observe($('.stats-grid'));
+$('#year').textContent=new Date().getFullYear();
+function showToast(msg){let t=$('.toast-msg');if(!t){t=document.createElement('div');t.className='toast-msg';document.body.appendChild(t);}t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),4000);}
+setTimeout(()=>$('#pageLoader')?.classList.add('hidden'),800);
+if(window.matchMedia('(pointer:fine)').matches){
+document.body.classList.add('cursor-on');
+const dot=$('#cursorDot');
+document.addEventListener('mousemove',e=>{if(dot){dot.style.left=e.clientX+'px';dot.style.top=e.clientY+'px';dot.style.transform='translate(-50%,-50%)';}});
+}
+let testAuto=setInterval(()=>goTest(testIdx+1),6000);
+$('#testTrack')?.addEventListener('mouseenter',()=>clearInterval(testAuto));
+renderCourses();renderTeachers();renderGallery();renderTestimonials();renderFaq();
+observeReveal();
+setTimeout(observeReveal,100);
+
+// --- Enviar consulta por WhatsApp ---
+$('#contactForm')?.addEventListener('submit',e=>{
+  e.preventDefault();
+  const fd=new FormData(e.target);
+  const nombre=(fd.get('nombre')||'').toString().trim();
+  const email=(fd.get('email')||'').toString().trim();
+  const telefono=(fd.get('telefono')||'').toString().trim();
+  const mensaje=(fd.get('mensaje')||'').toString().trim();
+  const text=[
+    'Hola! Quiero hacer una consulta.',
+    nombre?('Nombre: '+nombre):null,
+    email?('Email: '+email):null,
+    telefono?('Teléfono: '+telefono):null,
+    mensaje?('Consulta: '+mensaje):null
+  ].filter(Boolean).join('\n');
+  openWhatsapp(INSTITUTE_WA_NUMBER_RAW,text);
+  showToast('Se abrió WhatsApp para enviar tu consulta.');
+  e.target.reset();
+});
+
+// --- Modal inscripción ---
+const overlay=$('#inscOverlay');
+function openInsc(){
+  overlay?.classList.add('open');
+  document.body.style.overflow='hidden';
+  setTimeout(()=>$('#i_nombre')?.focus(),50);
+}
+function closeInsc(){
+  overlay?.classList.remove('open');
+  document.body.style.overflow='';
+}
+$$('[data-open-inscripcion]').forEach(el=>{
+  el.addEventListener('click',e=>{e.preventDefault();openInsc();});
+});
+$('#inscCloseBtn')?.addEventListener('click',closeInsc);
+$('#inscCancelBtn')?.addEventListener('click',closeInsc);
+overlay?.addEventListener('click',e=>{if(e.target===overlay)closeInsc();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&overlay?.classList.contains('open'))closeInsc();});
+
+$('#inscForm')?.addEventListener('submit',async e=>{
+  e.preventDefault();
+  const btn=$('#inscSubmitBtn');
+  const url=(INSCRIPCION_SHEETS_WEBAPP_URL||'').trim();
+  if(!url){
+    showToast('Falta configurar la URL de Google Sheets (Apps Script).');
+    return;
+  }
+  const fd=new FormData(e.target);
+  const payload={
+    nombre:(fd.get('nombre')||'').toString().trim(),
+    edad:(fd.get('edad')||'').toString().trim(),
+    telefono:(fd.get('telefono')||'').toString().trim(),
+    nivel:(fd.get('nivel')||'').toString().trim(),
+    email:(fd.get('email')||'').toString().trim(),
+    curso:(fd.get('curso')||'').toString().trim(),
+    observaciones:(fd.get('observaciones')||'').toString().trim(),
+    origen:'web',
+    userAgent:navigator.userAgent
+  };
+  btn.disabled=true;
+  btn.textContent='Enviando...';
+  const ok=await postToSheets(url,payload);
+  btn.disabled=false;
+  btn.textContent='Enviar solicitud';
+  if(ok){
+    showToast('Solicitud enviada. ¡Gracias!');
+    e.target.reset();
+    closeInsc();
+  }else{
+    showToast('No se pudo enviar. Probá nuevamente.');
+  }
+});
+})();
+
+</script>
+</body>
+</html>

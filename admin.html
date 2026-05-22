@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Panel Admin | Cambridge School of English</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--bg:#f4f7fb;--surface:#fff;--border:#e5e7eb;
+--text:#1f2937;--muted:#6b7280;
+--primary:#2563eb;--primary-dark:#1e3a5f;
+--radius:12px;--shadow:0 4px 20px rgba(30,58,95,.08);
+--sidebar:260px;--transition:.3s cubic-bezier(.4,0,.2,1);
+}
+[data-theme="dark"]{
+--bg:#0f172a;--surface:#1e293b;--border:#334155;
+--text:#f1f5f9;--muted:#94a3b8;
+}
+html{font-size:15px}
+body{font-family:'Poppins',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;transition:background .3s,color .3s}
+.hidden{display:none!important}
+.app-loader{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;align-items:center;justify-content:center}
+.app-loader.done{opacity:0;visibility:hidden;pointer-events:none;transition:.4s}
+.spinner{width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--primary);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+#loginScreen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem;background:linear-gradient(135deg,#e8f2fc,#fff 50%,#dbeafe)}
+.login-card{width:min(420px,100%);background:var(--surface);padding:2.5rem;border-radius:20px;box-shadow:0 25px 60px rgba(30,58,95,.12);border:1px solid var(--border)}
+.login-brand{text-align:center;margin-bottom:2rem}
+.login-brand .mark{width:56px;height:56px;margin:0 auto 1rem;border-radius:14px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-family:'Montserrat',sans-serif}
+.login-brand h1{font-size:1.25rem;color:var(--primary-dark)}
+.login-brand p{font-size:.85rem;color:var(--muted);margin-top:.25rem}
+.form-group{margin-bottom:1.25rem}
+.form-group label{display:block;font-size:.8rem;font-weight:600;margin-bottom:.4rem;color:var(--muted)}
+.form-group input{width:100%;padding:.85rem 1rem;border:1px solid var(--border);border-radius:var(--radius);font:inherit;background:var(--bg);color:var(--text);transition:border .25s,box-shadow .25s}
+.form-group input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(37,99,235,.2)}
+.pass-wrap{position:relative}
+.pass-wrap button{position:absolute;right:.75rem;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--muted);font-size:.85rem}
+.btn{width:100%;padding:.9rem;border:none;border-radius:999px;font-weight:600;font-size:1rem;cursor:pointer;transition:var(--transition)}
+.btn-primary{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:#fff}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,99,235,.35)}
+.login-error{color:#dc2626;font-size:.85rem;margin-top:1rem;text-align:center;min-height:1.2em}
+#appShell{display:flex;min-height:100vh}
+.sidebar{width:var(--sidebar);background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;position:fixed;top:0;left:0;bottom:0;z-index:100;transition:transform var(--transition)}
+.sidebar-brand{padding:1.5rem;border-bottom:1px solid var(--border)}
+.sidebar-brand strong{display:block;font-family:'Montserrat',sans-serif;color:var(--primary-dark)}
+.sidebar-brand small{font-size:.75rem;color:var(--muted)}
+.sidebar-nav{flex:1;padding:1rem 0;overflow-y:auto}
+.sidebar-nav a{display:flex;align-items:center;gap:.75rem;padding:.75rem 1.5rem;color:var(--muted);font-weight:500;font-size:.9rem;transition:var(--transition);border-left:3px solid transparent}
+.sidebar-nav a:hover,.sidebar-nav a.active{color:var(--primary);background:rgba(37,99,235,.06);border-left-color:var(--primary)}
+.sidebar-nav a svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2}
+.sidebar-footer{padding:1rem 1.5rem;border-top:1px solid var(--border)}
+.main-wrap{flex:1;margin-left:var(--sidebar);display:flex;flex-direction:column;min-width:0}
+.topbar{height:64px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;position:sticky;top:0;z-index:50}
+.breadcrumbs{font-size:.85rem;color:var(--muted)}
+.breadcrumbs span{color:var(--text);font-weight:600}
+.topbar-actions{display:flex;align-items:center;gap:.75rem}
+.search-global{position:relative}
+.search-global input{padding:.55rem 1rem .55rem 2.5rem;border:1px solid var(--border);border-radius:999px;width:min(280px,40vw);font:inherit;background:var(--bg);color:var(--text)}
+.search-global svg{position:absolute;left:.85rem;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--muted)}
+.icon-btn{width:40px;height:40px;border-radius:10px;border:1px solid var(--border);background:var(--surface);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:var(--transition)}
+.icon-btn:hover{border-color:var(--primary);color:var(--primary)}
+.content{padding:1.5rem;flex:1}
+.panel{display:none;animation:fadeIn .4s ease}
+.panel.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.page-title{font-family:'Montserrat',sans-serif;font-size:1.5rem;margin-bottom:1.5rem;color:var(--primary-dark)}
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:1.5rem}
+.stat-box{background:var(--surface);padding:1.25rem;border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow)}
+.stat-box h3{font-size:1.75rem;color:var(--primary)}
+.stat-box p{font-size:.85rem;color:var(--muted);margin-top:.25rem}
+.card{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);overflow:hidden}
+.card-header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;padding:1.25rem;border-bottom:1px solid var(--border)}
+.card-header h2{font-size:1.1rem}
+.toolbar{display:flex;flex-wrap:wrap;gap:.75rem}
+.btn-sm{padding:.5rem 1rem;border-radius:999px;border:none;font-weight:600;font-size:.85rem;cursor:pointer;transition:var(--transition)}
+.btn-sm.primary{background:var(--primary);color:#fff}
+.btn-sm.secondary{background:var(--bg);color:var(--text);border:1px solid var(--border)}
+.btn-sm.danger{background:#fef2f2;color:#dc2626;border:1px solid #fecaca}
+.btn-sm:hover{opacity:.9;transform:translateY(-1px)}
+.table-wrap{overflow-x:auto;max-height:60vh}
+table{width:100%;border-collapse:collapse;font-size:.88rem}
+th,td{padding:.85rem 1rem;text-align:left;border-bottom:1px solid var(--border)}
+th{background:var(--bg);font-weight:600;color:var(--muted);cursor:pointer;user-select:none;white-space:nowrap;position:sticky;top:0}
+th:hover{color:var(--primary)}
+th.sorted::after{content:' ▲';font-size:.65rem}
+th.sorted.desc::after{content:' ▼'}
+tr:hover td{background:rgba(37,99,235,.04)}
+.actions{display:flex;gap:.35rem}
+.empty-state{padding:3rem;text-align:center;color:var(--muted)}
+.modal-overlay{position:fixed;inset:0;background:rgba(15,23,42,.5);z-index:200;display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;visibility:hidden;transition:var(--transition)}
+.modal-overlay.open{opacity:1;visibility:visible}
+.modal{background:var(--surface);width:min(520px,100%);max-height:90vh;overflow-y:auto;border-radius:16px;padding:1.5rem;transform:scale(.95);transition:transform .3s}
+.modal-overlay.open .modal{transform:scale(1)}
+.modal h3{margin-bottom:1.25rem;font-size:1.15rem}
+.modal-grid{display:grid;gap:1rem}
+.modal-grid label{display:block;font-size:.8rem;font-weight:600;color:var(--muted);margin-bottom:.3rem}
+.modal-grid input,.modal-grid select,.modal-grid textarea{width:100%;padding:.7rem 1rem;border:1px solid var(--border);border-radius:var(--radius);font:inherit;background:var(--bg);color:var(--text)}
+.modal-actions{display:flex;justify-content:flex-end;gap:.75rem;margin-top:1.5rem}
+.toast-container{position:fixed;bottom:1.5rem;right:1.5rem;z-index:300;display:flex;flex-direction:column;gap:.5rem}
+.toast{padding:1rem 1.25rem;background:var(--primary-dark);color:#fff;border-radius:var(--radius);box-shadow:var(--shadow);animation:slideIn .35s ease;font-size:.9rem}
+.toast.error{background:#dc2626}
+.toast.success{background:#059669}
+@keyframes slideIn{from{transform:translateX(120%)}to{transform:none}}
+.confirm-dialog{text-align:center}
+.confirm-dialog p{margin:1rem 0 1.5rem;color:var(--muted)}
+.sidebar-toggle{display:none;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--text)}
+@media(max-width:900px){
+.sidebar{transform:translateX(-100%)}
+.sidebar.open{transform:none}
+.main-wrap{margin-left:0}
+.sidebar-toggle{display:block}
+}
+
+</style>
+</head>
+<body>
+<div class="app-loader" id="appLoader"><div class="spinner"></div></div>
+
+<section id="loginScreen">
+  <div class="login-card">
+    <div class="login-brand">
+      <div class="mark">CSE</div>
+      <h1>Panel Administrativo</h1>
+      <p>Cambridge School of English · Apóstoles</p>
+    </div>
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="loginUser">Usuario</label>
+        <input type="text" id="loginUser" name="user" autocomplete="username" required placeholder="Ingresá tu usuario">
+      </div>
+      <div class="form-group">
+        <label for="loginPass">Contraseña</label>
+        <div class="pass-wrap">
+          <input type="password" id="loginPass" name="pass" autocomplete="current-password" required placeholder="••••••••">
+          <button type="button" id="togglePass" aria-label="Mostrar contraseña">Ver</button>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Ingresar al sistema</button>
+      <p class="login-error" id="loginError" role="alert"></p>
+    </form>
+    <p style="text-align:center;margin-top:1.5rem;font-size:.8rem;color:var(--muted)"><a href="index.html">← Volver al sitio</a></p>
+  </div>
+</section>
+
+<div id="appShell" class="hidden">
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <strong>Cambridge Admin</strong>
+      <small>School of English</small>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="#" data-panel="dashboard" class="active"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg> Dashboard</a>
+      <a href="#" data-panel="cursos"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg> Cursos</a>
+      <a href="#" data-panel="alumnos"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> Alumnos</a>
+      <a href="#" data-panel="docentes"><svg viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"/></svg> Docentes</a>
+      <a href="#" data-panel="horarios"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Horarios</a>
+      <a href="#" data-panel="config"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg> Configuración</a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="#" id="logoutBtn" style="color:#dc2626;font-weight:600;font-size:.9rem">Cerrar sesión</a>
+    </div>
+  </aside>
+
+  <div class="main-wrap">
+    <header class="topbar">
+      <button class="sidebar-toggle" id="sidebarToggle" aria-label="Menú">☰</button>
+      <div class="breadcrumbs" id="breadcrumbs">Panel / <span>Dashboard</span></div>
+      <div class="topbar-actions">
+        <div class="search-global">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <input type="search" id="globalSearch" placeholder="Buscar alumnos, cursos, docentes...">
+        </div>
+        <button class="icon-btn" id="themeToggle" title="Modo oscuro" aria-label="Tema">🌙</button>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="panel active" id="panel-dashboard">
+        <h1 class="page-title">Dashboard</h1>
+        <div class="stats-row" id="dashStats"></div>
+        <div class="card">
+          <div class="card-header"><h2>Resumen académico</h2></div>
+          <div style="padding:1.25rem;color:var(--muted);font-size:.95rem">
+            <p>Bienvenido al panel de gestión de Cambridge School of English. Utilizá el menú lateral para administrar alumnos, cursos y docentes. Todos los datos se guardan localmente en este navegador.</p>
+          </div>
+        </div>
+        <div class="card" style="margin-top:1.5rem">
+          <div class="card-header"><h2>Resultados de búsqueda global</h2></div>
+          <div class="table-wrap" id="globalResults"><div class="empty-state">Escribí en el buscador para ver resultados</div></div>
+        </div>
+      </section>
+
+      <section class="panel" id="panel-alumnos">
+        <h1 class="page-title">Gestión de Alumnos</h1>
+        <div class="card">
+          <div class="card-header">
+            <h2>Alumnos registrados</h2>
+            <div class="toolbar">
+              <input type="search" id="searchAlumnos" placeholder="Buscar alumno..." style="padding:.5rem 1rem;border:1px solid var(--border);border-radius:999px;font:inherit">
+              <button class="btn-sm primary" data-action="add" data-entity="alumno">+ Agregar</button>
+            </div>
+          </div>
+          <div class="table-wrap"><table id="tableAlumnos"><thead><tr>
+            <th data-sort="nombre">Nombre</th><th data-sort="edad">Edad</th><th data-sort="curso">Curso</th>
+            <th data-sort="nivel">Nivel</th><th data-sort="telefono">Teléfono</th><th data-sort="email">Email</th><th>Acciones</th>
+          </tr></thead><tbody></tbody></table></div>
+        </div>
+      </section>
+
+      <section class="panel" id="panel-cursos">
+        <h1 class="page-title">Gestión de Cursos</h1>
+        <div class="card">
+          <div class="card-header">
+            <h2>Cursos activos</h2>
+            <div class="toolbar">
+              <input type="search" id="searchCursos" placeholder="Buscar curso...">
+              <button class="btn-sm primary" data-action="add" data-entity="curso">+ Agregar</button>
+            </div>
+          </div>
+          <div class="table-wrap"><table id="tableCursos"><thead><tr>
+            <th data-sort="nombre">Curso</th><th data-sort="horarios">Horarios</th><th data-sort="aula">Aula</th><th data-sort="docente">Docente</th><th>Acciones</th>
+          </tr></thead><tbody></tbody></table></div>
+        </div>
+      </section>
+
+      <section class="panel" id="panel-docentes">
+        <h1 class="page-title">Gestión de Docentes</h1>
+        <div class="card">
+          <div class="card-header">
+            <h2>Equipo docente</h2>
+            <div class="toolbar">
+              <input type="search" id="searchDocentes" placeholder="Buscar docente...">
+              <button class="btn-sm primary" data-action="add" data-entity="docente">+ Agregar</button>
+            </div>
+          </div>
+          <div class="table-wrap"><table id="tableDocentes"><thead><tr>
+            <th data-sort="nombre">Nombre</th><th data-sort="especialidad">Especialidad</th><th data-sort="horarios">Horarios</th><th data-sort="cursos">Cursos</th><th>Acciones</th>
+          </tr></thead><tbody></tbody></table></div>
+        </div>
+      </section>
+
+      <section class="panel" id="panel-horarios">
+        <h1 class="page-title">Horarios</h1>
+        <div class="card">
+          <div class="card-header"><h2>Grilla semanal</h2></div>
+          <div class="table-wrap" id="horariosGrid"></div>
+        </div>
+      </section>
+
+      <section class="panel" id="panel-config">
+        <h1 class="page-title">Configuración</h1>
+        <div class="card" style="padding:1.5rem">
+          <h2 style="margin-bottom:1rem;font-size:1.1rem">Datos del sistema</h2>
+          <div class="toolbar" style="margin-bottom:1.5rem">
+            <button class="btn-sm primary" id="exportBtn">Exportar JSON</button>
+            <button class="btn-sm secondary" id="importBtn">Importar JSON</button>
+            <input type="file" id="importFile" accept=".json" class="hidden">
+            <button class="btn-sm danger" id="resetBtn">Restaurar datos demo</button>
+          </div>
+          <p style="color:var(--muted);font-size:.9rem">Los datos se almacenan en localStorage. Exportá regularmente para respaldar la información.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modalContent"></div>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script type="module" src="./js/app.js"></script>
+</body>
+</html>

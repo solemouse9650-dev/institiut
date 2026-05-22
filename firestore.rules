@@ -1,0 +1,28 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    // Protección Admin:
+    // Para ser admin, debe existir el documento: /admins/{uid}
+    function isAdmin() {
+      return signedIn() && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    // Colección admins (solo lectura del propio doc; escrituras DENEGADAS desde cliente)
+    match /admins/{uid} {
+      allow read: if signedIn() && request.auth.uid == uid;
+      allow create, update, delete: if false;
+    }
+
+    // Datos del panel (solo admins)
+    match /alumnos/{id} { allow read, write: if isAdmin(); }
+    match /cursos/{id} { allow read, write: if isAdmin(); }
+    match /docentes/{id} { allow read, write: if isAdmin(); }
+    match /horarios/{id} { allow read, write: if isAdmin(); }
+  }
+}
+
